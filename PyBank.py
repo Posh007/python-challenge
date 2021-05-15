@@ -24,8 +24,9 @@ budget_data_csv_path = os.path.join("Resources", "budget_data.csv")
 # Open and read csv into dictionaries to allow for column names use instead of index numbers
 with open(budget_data_csv_path) as csvfile:
     reader = csv.DictReader(csvfile)
-
-    For row in reader: 
+    
+    for row in csv_reader
+        
         #Convert string values to integers, iterate through rows and calculate totals
         total_months = total months + 1
         total_profit_loss = total profit_loss + int(row["Profit/Loss"])
@@ -35,9 +36,22 @@ with open(budget_data_csv_path) as csvfile:
         previous_profit_loss = int(row[Profit/Loss])
         month_of_change = month_of_change + row["Date"]
 
+        #Calculate the average of changes in "Profit/Losses"
+        profit_loss_change_list = profit_loss_change_list + [profit_loss_change]
+        average_profit_loss_change = sum(profit_loss_change_list)/len(profit_loss_change_list)
+        
         #Calulate the greatest increase
-        If(revenue_change) > greatest_increase [1]:
-            greatest_increase [0] = row ["Date"]
+        if(profit_loss_change > greatest_increase [1]):
+            greatest_increase [0[ = row["Date"]
             greatest_increase [1] = profit_loss_change
 
+        #Calculate the greatest decrease
+        if(profit_loss_change) < greatest_decrease [1]:
+            greatest_decrease [0] = row["Date"]
+            greatest_decrease[1] = profit_loss_change
+            :wq!
+
+
+
+        
 
