@@ -13,6 +13,8 @@ import csv
 # Filepath to collect output data
 budget_data_csv_path = os.path.join("Resources", "budget_data.csv")
 
+output_file = "analysis/budget_analysis.txt"
+
 # Define PyBank's variables
 total_months = 0
 total_profit_loss = 0
@@ -57,11 +59,19 @@ with open(budget_data_csv_path) as budget_data:
 
 # Print Analysis Summary
 
-print(f"\nFinancial Analysis\n"
-print(f"---------------------------------\n"
-print(f" Total Months: {total_months})\n"
-print(f" Total Profit/Loss: ${total_profit_loss})\n"
-print(f" Average Profit/Loss Change: ${average_profit_loss_change})\n"
-print(f" Greatest Increase in Profit/Loss: {greatest_increase [0]} (${greatest_increase[1]}))\n")
-print(f" Greatest Decrease in Profit/Loss: {greatest_increase [0]} (${greatest_decrease[1]}))\n")
+output = (
+    f"\nFinancial Analysis\n"
+    f"--------------------------\n"
+    f" Total Months: {total_months}\n"
+    f" Total Profit/Loss: ${total_profit_loss}\n"
+    f" Average Profit/Loss Change: ${average_profit_loss_change}\n"
+    f" Greatest Increase in Profit/Loss: {greatest_increase [0]} (${greatest_increase[1]})\n"
+    f" Greatest Decrease in Profit/Loss: {greatest_increase [0]} (${greatest_decrease[1]})\n"
+)
 
+#Print Output
+print (output)
+
+#Transfer analysis results to text file
+with open(output_file), "w") as text_file
+    txt_file.write(output)
