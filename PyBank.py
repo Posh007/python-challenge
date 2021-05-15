@@ -11,32 +11,33 @@ import os
 import csv
 
 # Define PyBank's variables
-months = []
-profit_loss_changes = []
-
-count_months = 0
-net_profit_loss = 0
+total_months = 0
+total_profit_loss = 0
+profit_loss_change = 0
+average_profit_loss_change = []
 previous_month_profit_loss = 0
 current_month_profit_loss = 0
-profit_loss_change = 0
-
-# Change directory to the directory of current python script
-os.chdir(os.path.dirname(__file__))
 
 # Path to collect data from the Resources folder
 budget_data_csv_path = os.path.join("Resources", "budget_data.csv")
 
-# Open and read csv
-with open(budget_data_csv_path, newline="") as csvfile:
+# Open and read csv into dictionaries to allow for column names use instead of index numbers
+with open(budget_data_csv_path) as csvfile:
+    reader = csv.DictReader(csvfile)
 
-        csv_reader = csv.reader(csvfile, delimiter=",")
+    For row in reader: 
+        #Convert string values to integers, iterate through rows and calculate totals
+        total_months = total months + 1
+        total_profit_loss = total profit_loss + int(row["Profit/Loss"])
 
-        # Read the header row first
-        csv_header = next(csvfile)
+        #Calculate profit_loss_changes
+        profit_loss_change = int(row["Profit/Loss"]) - previuos_profit_loss
+        previous_profit_loss = int(row[Profit/Loss])
+        month_of_change = month_of_change + row["Date"]
 
-        # print(f"Header: {csv_header}")
-        # This prints -->> Header: Date, Profit/Losses
-                                
-        # Read through each row of data after the header
-        for row in csv_reader:
+        #Calulate the greatest increase
+        If(revenue_change) > greatest_increase [1]:
+            greatest_increase [0] = row ["Date"]
+            greatest_increase [1] = profit_loss_change
+
 
