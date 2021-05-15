@@ -1,4 +1,4 @@
-l# Create a Python script that analyzes the PyBank records to calculate each of the following:
+# Create a Python script that analyzes the PyBank records to calculate each of the following:
 # -->>  The total number of months included in the dataset
 # -->>  The net total amount of "Profit/Losses" over the entire period
 # -->>  The average of the changes in "Profit/Losses" over the entire period
@@ -17,13 +17,18 @@ budget_data_csv_path = os.path.join("Resources", "budget_data.csv")
 total_months = 0
 total_profit_loss = 0
 profit_loss_change = 0
+profit_lost_change_list = []
 average_profit_loss_change = []
-previous_month_profit_loss = 0
-current_month_profit_loss = 0
+previous_profit_loss = 0
+current_profit_loss = 0
+month_of_change = 0
+greatest_decrease = ["",0]
+greatest_increase = ["", 99999999999999]
 
-# Open and read csv file, use DictReader to allow for columns to be referenced by name instead of index numbers
-with open(budget_data_csv_path) as budget:
-    reader - csv.DictReader(budget_data)
+# Open and read csv file, use DictReader to gnore skip row and to allow for columns to be referenced by name instead of index numbers
+with open(budget_data_csv_path) as budget_data:
+    
+    csvreader = csv.DictReader(budget_data)
 
     for row in csvreader:
          
@@ -31,27 +36,32 @@ with open(budget_data_csv_path) as budget:
         total_months = total_months + 1
         total_profit_loss = total_profit_loss + int(row["Profit/Loss"])
 
-        #Calculate profit_loss_changes
-        profit_loss_change = int(row["Profit/Loss"]) - previuos_profit_loss
-        previous_profit_loss = int(row[Profit/Loss])
-        month_of_change = month_of_change + row["Date"]
+        #Calculate changes in Profit/Loss
+        profit_loss_change = int(row["Profit/Loss"]) - previous_profit_loss
+        previous_profit_loss = int(row["Profit/Loss"])
+        month_of_change = month_of_change + (row["Date"])
 
-        #Calculate the average of changes in "Profit/Losses"
+        #Calculate the average of changes in Profit/Losses
         profit_loss_change_list = profit_loss_change_list + [profit_loss_change]
         average_profit_loss_change = sum(profit_loss_change_list)/len(profit_loss_change_list)
-                                
-        #Calulate the greatest increase
+        
+        # Calculate the greatest increase in profit/loss
         if(profit_loss_change > greatest_increase [1]):
-            greatest_increase [0[ = str(row[0])
+            greatest_increase [0] = row["Date"]
             greatest_increase [1] = change_value
 
         #Calculate the greatest decrease
-        if(profit_loss_change) < greatest_decrease [1]:
-            greatest_decrease [0] = str (row[0])
+        if(profit_loss_change < greatest_decrease [1]):
+            greatest_decrease [0] = row["Date"]
             greatest_decrease[1] =  change_value
 
-print(f" Total Months: {total_months}")
-print(f" Total: {sum(pnl_statements)}")
-print(f" Average Change: {sum(pnl_statements) / total_months}")
-print(f" Greatest increase in profits: {greatest_increase_month} ({greatest_increase})")
-print(f" Greatest decrease in profits: {greatest_increase_month} ({greatest_decrease})")
+# Print Analysis Summary
+
+print(f"\nFinancial Analysis\n"
+print(f"---------------------------------\n"
+print(f" Total Months: {total_months})\n"
+print(f" Total Profit/Loss: ${total_profit_loss})\n"
+print(f" Average Profit/Loss Change: ${average_profit_loss_change})\n"
+print(f" Greatest Increase in Profit/Loss: {greatest_increase [0]} (${greatest_increase[1]}))\n")
+print(f" Greatest Decrease in Profit/Loss: {greatest_increase [0]} (${greatest_decrease[1]}))\n")
+
