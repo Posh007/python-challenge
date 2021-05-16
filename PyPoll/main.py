@@ -13,16 +13,17 @@ import csv
 
 election_data_csv_path = os.path.join("Resources","election_data.csv")
 
+# Text file to store the results
 output_file = "Analysis/election_analysis.txt"
 
 # Define and initialize parameters
-# Total voter counter
+
 vote_count = 0
 total_votes = 0
 vote_percent = []
 
 # candidate options and vote counters
-candidate_options = []
+candidate_options = [] #list of running or available candidates 
 candidate_votes = {}
 #Winning candidate and winning count list
 winning_candidate = ""
@@ -89,7 +90,7 @@ with open(output_file, "w") as txt_file:
         # Transfer candidates' voter count and percentage to a text file
         txt_file.write(voter_output)
 
-    # Print the winning candidate
+    # Print the winning candidate to Terminal
     winning_candidate_summary = (
         f"---------------------------\n"
         f"Winner: {winning_candidate}\n"
