@@ -48,7 +48,7 @@ with open(budget_data_csv_path) as budget_data:
         current_profit_loss = None
 
 #Calculate the average of changes in Profit/Losses
-average_profit_loss_change = round(total_profit_loss/total_months)
+average_profit_loss_change = total_profit_loss/total_months
 
 # Print Analysis Summary
 
@@ -57,12 +57,12 @@ output = (
     f"--------------------------\n"
     f" Total Months: {total_months}\n"
     f" Total Profit/Loss: ${total_profit_loss}\n"
-    f" Average Profit/Loss Change: ${average_profit_loss_change}\n"
+    f" Average Profit/Loss Change: ${average_profit_loss_change: 0f}\n"
     f" Greatest Increase in Profit/Loss: {greatest_increase [0]} (${greatest_increase[1]})\n"
     f" Greatest Decrease in Profit/Loss: {greatest_decrease [0]} (${greatest_decrease[1]})\n"
 )
 
-# Print Output
+#Print Output
 print("RESULT \n", output)
 
 #Transfer analysis results to text file
