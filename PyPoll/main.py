@@ -52,7 +52,7 @@ with open(election_data_csv_path) as election_data:
             candidate_votes[candidate_name] = 0
 
         # Add to candidate's vote count 
-        candidate_votes[candidate-name] = candidate_votes[candidate_name] + 1
+        candidate_votes[candidate_name] = candidate_votes[candidate_name] + 1
 
 # Print results and transfer data to a text file
 with open(output_file, "w") as txt_file:
@@ -71,8 +71,7 @@ with open(output_file, "w") as txt_file:
     txt_file.write(election_results)
 
     # Identify the winner by iterating through counts
-
-for candidate in candidate_votes:
+    for candidate in candidate_votes:
         
         # Pull the vote count and percentage
         votes = candidate_votes.get(candidate)
@@ -83,20 +82,24 @@ for candidate in candidate_votes:
             winning_count = votes
             winning_candidate = candidate
 
-        # Print candidates indivudual voter count and percentage
+        # Print candidates individual voter count and percentage
         voter_output = f"{candidate}: {vote_percentage: .3f}% ({votes})\n"
         print(voter_output)
 
         # Transfer candidates' voter count and percentage to a text file
-        txt.file.write(voter_output)
+        txt_file.write(voter_output)
 
     # Print the winning candidate
     winning_candidate_summary = (
         f"---------------------------\n"
         f"Winner: {winning_candidate}\n"
         f"----------------------------\n"
-    )
+    )         
     print(winning_candidate_summary)
+
+    # Store the winning cabdidate's name to the text file
+    txt_file.write(winning_candidate_summary)
+
 
 
 
