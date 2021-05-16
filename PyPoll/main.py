@@ -20,13 +20,11 @@ output_file = "Analysis/election_analysis.txt"
 
 vote_count = 0
 total_votes = 0
-vote_percent = []
-
-# candidate options and vote counters
-candidate_options = [] #list of running or available candidates 
+percent_vote = []
+candidate_choices = [] #list of running or available candidates 
 candidate_votes = {}
 #Winning candidate and winning count list
-winning_candidate = ""
+winning_candidate = "" # will hold the name of the winner 
 winning_count = 0
 
 # Open and read the CSV using using DictReader
@@ -44,10 +42,10 @@ with open(election_data_csv_path) as election_data:
         candidate_name = row["Candidate"]
 
         # Check if candidate does not match any existing candidates
-        if candidate_name not in candidate_options:
+        if candidate_name not in candidate_choices:
             
             # Add candidate to the list of candidates
-            candidate_options.append(candidate_name)
+            candidate_choices.append(candidate_name)
 
             # Record vote_count 
             candidate_votes[candidate_name] = 0
@@ -74,9 +72,9 @@ with open(output_file, "w") as txt_file:
     # Identify the winner by iterating through counts
     for candidate in candidate_votes:
         
-        # Pull the vote count and percentage
+        # Pull the vote count and percentage of votes
         votes = candidate_votes.get(candidate)
-        vote_percentage = float(votes) / float(total_votes) * 100
+        percent_vote = float(votes) / float(total_votes) * 100
         
         # Identify winning vote count and cabdidate
         if (votes > winning_count):
@@ -84,7 +82,7 @@ with open(output_file, "w") as txt_file:
             winning_candidate = candidate
 
         # Print candidates individual voter count and percentage
-        voter_output = f"{candidate}: {vote_percentage: .3f}% ({votes})\n"
+        voter_output = f"{candidate}: {percent_vote: .3f}% ({votes})\n"
         print(voter_output)
 
         # Transfer candidates' voter count and percentage to a text file
